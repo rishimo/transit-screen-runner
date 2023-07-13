@@ -35,6 +35,8 @@ def secretFunc():
 	global OPERATORS
 	global STOPNAMES
 	global OPENWEATHER_API_KEY
+	global LATITUDE
+	global LONGITUDE
 
 	TRANSIT_URL = 'http://api.511.org/transit/StopMonitoring/'
 	TRANSIT_API_KEY = os.environ['TRANSIT_API_KEY']
@@ -158,14 +160,16 @@ print('Initializing and clearing screen.')
 epd.init()
 epd.Clear()
 
+load_dotenv()
+
 WEATHER_API_KEY = os.environ['OPENWEATHER_API_KEY']
 LOCATION = 'San Francisco, CA.'
-LATITUDE = os.environ['LATITUDE']
-LONGITUDE = os.environ['LONGITUDE']
+LATITUDE = os.environ['LAT']
+LONGITUDE = os.environ['LONG']
 UNITS = 'imperial'
 CSV_OPTION = False # if csv_option == True, a weather data will be appended to 'record.csv'
 
-WEATHER_URL = 'http://api.openweathermap.org/data/2.5/onecall?' 
+WEATHER_URL = 'http://api.openweathermap.org/data/2.5/onecall' 
 
 while True:
 	# Ensure there are no errors with connection

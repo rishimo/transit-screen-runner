@@ -7,6 +7,10 @@ sys.path.append('lib')
 from waveshare_epd import epd7in5_V2
 epd = epd7in5_V2.EPD()
 
+print("Resetting screen...")
+
 epd.init()
 epd.Clear()
 epd.sleep()
+
+print("Done!")
