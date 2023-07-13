@@ -1,0 +1,3 @@
+[submodule "transit-screen"]
+	path = transit-screen
+	url = https://github.com/rishimo/transit-screen.git
