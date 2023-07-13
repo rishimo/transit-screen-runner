@@ -179,7 +179,7 @@ while True:
 			# HTTP request
 			print('Attempting to connect to OWM.')
 			response = requests.get(WEATHER_URL, params = {'lat': LATITUDE,
-			   											  'long': LONGITUDE,
+			   											  'lon': LONGITUDE,
 														  'units': UNITS,
 														  'appid': WEATHER_API_KEY})
 			print('Connection to OWM successful.')
@@ -224,8 +224,15 @@ while True:
 			daily_temp = daily[0]['temp']
 			temp_max = daily_temp['max']
 			temp_min = daily_temp['min']
-			transitArrivals = getNextTransit()
-			
+			try:
+				transitArrivals = getNextTransit()
+				string_transit1 = f" City: {transitArrivals.loc[0, 'arrivalTime']}"
+				string_transit2 = f"Next: {transitArrivals.loc[1, 'arrivalTime']}"
+			except TypeError:
+				print("No arrivals found. Moving along...")
+				string_transit1 = " City: No arrivals"
+				string_transit2 = "Next: No arrivals"
+
 			# Append weather data to CSV if csv_option == True
 			if CSV_OPTION == True:
 				# Get current year, month, date, and time
@@ -252,8 +259,7 @@ while True:
 			string_temp_min = 'Low:  ' + format(temp_min, '>.0f') + u'\N{DEGREE SIGN}F'
 			string_precip_percent = 'Precip: ' + str(format(daily_precip_percent, '.0f'))  + '%'
 
-			string_transit1 = f" City: {transitArrivals.loc[0, 'arrivalTime']}"
-			string_transit2 = f"Next: {transitArrivals.loc[1, 'arrivalTime']}"
+
 			
 			# Set error code to false
 			error = False
