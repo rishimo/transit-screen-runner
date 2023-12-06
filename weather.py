@@ -228,8 +228,8 @@ while True:
 				transitArrivals = getNextTransit()
 				string_transit1 = f" City: {transitArrivals.loc[0, 'arrivalTime']}"
 				string_transit2 = f"Next: {transitArrivals.loc[1, 'arrivalTime']}"
-			except TypeError:
-				print("No arrivals found. Moving along...")
+			except:
+				print("No arrivals found or Error. Moving along...")
 				string_transit1 = " City: No arrivals"
 				string_transit2 = "Next: No arrivals"
 
