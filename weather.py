@@ -327,6 +327,8 @@ while True:
 	if datetime.now().strftime('%H') == '03':
 		print('Clearning screen to avoid burn-in.')
 		epd.Clear()
+		epd.sleep()
+		time.sleep(3600)
 	
 	# Write to screen
 	write_to_screen(screen_output_file, 600)
